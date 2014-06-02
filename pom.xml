@@ -21,52 +21,75 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-core</artifactId>
       <version>2.12.0</version>
+      <exclusions>
+      	<exclusion>
+	      <groupId>org.slf4j</groupId>
+	      <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring</artifactId>
       <version>2.12.0</version>
+      <exclusions>
+      	<exclusion>
+	      	<groupId>commons-logging</groupId>
+	      	<artifactId>commons-logging</artifactId>
+      	</exclusion>
+      </exclusions>
     </dependency>
 
     <!-- logging -->
-    
-    <!-- ORIGINAL -->    
-    <!-- dependency>
+    <!-- Original Logging -->
+    <!-- 
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>1.7.5</version>
-    </dependency-->  
-    <!-- dependency>
+    </dependency>
+    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.5</version>
-    </dependency -->
-    <!-- dependency>
+    </dependency>
+    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
-    </dependency-->
-    <!-- LOG4j 2 -->
-  <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-api</artifactId>
-    <version>2.0-rc1</version>
-  </dependency>
-  <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-core</artifactId>
-    <version>2.0-rc1</version>
-  </dependency>    
-  <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-1.2-api</artifactId>
-    <version>2.0-rc1</version>
-  </dependency>
-  <dependency>
-   	<groupId>org.apache.logging.log4j</groupId>
-   	<artifactId>log4j-slf4j-impl</artifactId>
-   	<version>2.0-rc1</version>
-  </dependency>
+    </dependency>
+    -->
+    <!-- log4j2 -->
+    <!-- log4j2 - basic -->
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-api</artifactId>
+	  <version>2.0-rc1</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-core</artifactId>
+	  <version>2.0-rc1</version>
+	</dependency> 
+	<!-- log4j2 - log4j1 Bridge -->
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-1.2-api</artifactId>
+	  <version>2.0-rc1</version>
+	</dependency>
+
+	<!-- log4j2 - slf4j Bridge -->  
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-slf4j-impl</artifactId>
+	  <version>2.0-rc1</version>
+	</dependency>
+	<!-- log4j2 - commons logging Bridge -->
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-jcl</artifactId>
+	  <version>2.0-rc1</version>
+	</dependency>
     <!-- testing -->
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -74,8 +97,10 @@
       <version>2.12.0</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
 
+  </dependencies>
+  
+  
   <build>
     <defaultGoal>install</defaultGoal>
 
@@ -111,13 +136,6 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <version>2.3.7</version>
         <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Bundle-SymbolicName>log4j2-poc</Bundle-SymbolicName>
-            <Private-Package>com.ericsson.smart.poc.*</Private-Package>
-            <Import-Package></Import-Package>
-          </instructions>
-        </configuration>
       </plugin>
     </plugins>
   </build>
